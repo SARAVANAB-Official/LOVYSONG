@@ -1,4 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+
+const baseUrl = import.meta.env.BASE_URL
+const routerBasename = baseUrl === '/' ? '/' : baseUrl.replace(/\/$/, '')
 import { AppLayout } from '@/components/layout/AppLayout'
 import { HomePage } from '@/pages/HomePage'
 import { SearchPage } from '@/pages/SearchPage'
@@ -17,7 +20,7 @@ import { NotFoundPage } from '@/pages/NotFoundPage'
 
 export function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={routerBasename}>
       <Routes>
         <Route element={<AppLayout />}>
           <Route path="/" element={<HomePage />} />
